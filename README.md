@@ -18,7 +18,7 @@ Data Engineer (PySpark)
 ↓
 Relatório Excel por E-mail
 
-text
+
 
 ---
 
@@ -62,7 +62,7 @@ No painel do Supabase, acesse **SQL Editor** e execute:
 -- Tabela que guarda os Dicionários de cada cliente
 CREATE TABLE app_metadata (
     id         UUID        DEFAULT uuid_generate_v4() PRIMARY KEY,
-    client_id  TEXT        NOT NULL,
+    client_id          NOT NULL,
     dictionary JSONB       NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -70,8 +70,8 @@ CREATE TABLE app_metadata (
 -- Tabela que guarda os Logs de cada operação
 CREATE TABLE operation_logs (
     id        UUID        DEFAULT uuid_generate_v4() PRIMARY KEY,
-    action    TEXT        NOT NULL,
-    user_id   TEXT        NOT NULL,
+    action            NOT NULL,
+    user_id           NOT NULL,
     timestamp TIMESTAMPTZ DEFAULT NOW()
 );
 ```
@@ -83,14 +83,14 @@ cd self-data
 2. Configure as variáveis de ambiente
 Crie um arquivo .env na raiz do projeto:
 
-text
+
 SUPABASE_URL=https://xxxxxxxxxxxxxxxx.supabase.co
 SUPABASE_KEY=sua_secret_key_aqui
 3. Suba com Docker
 bash
 docker compose up --build
 4. Acesse a documentação interativa
-text
+
 http://localhost:8000/docs
 📡 Endpoints
 POST /save-dictionary
@@ -120,7 +120,6 @@ Busca o Dicionário mais recente de um cliente.
 
 Exemplo:
 
-text
 GET /get-dictionary/cliente-001
 Resposta:
 
@@ -146,16 +145,7 @@ docker compose down
 
 # Ver logs em tempo real
 docker compose logs -f
+
 👤 Autor
 Nicolas — Back-end Engineer
 Projeto: Self-Data — Democratizando o acesso a dados via chat
-
-***
-
-> ⚠️ Lembra de criar o `.gitignore` antes de subir pro GitHub com esse conteúdo:
-> ```
-> .env
-> __pycache__/
-> .venv/
-> *.pyc
-> ```
